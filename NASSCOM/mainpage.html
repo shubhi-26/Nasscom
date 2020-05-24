@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha_Sootra</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@0;1&family=Oswald:wght@700&display=swap"
+    rel="stylesheet">
+<style>
+    body {
+        /* CSS reset */
+        margin: 0px;
+        padding: 0px;
+        background-image: url("sid.jpg");
+        background-size: cover;    
+    }
+
+    /* TAG LINE */
+    #tag_line {
+        color: whitesmoke;
+        font-size: 70px;
+        font-family: 'Oswald', sans-serif;
+        text-shadow: whitesmoke;
+        align:right;
+    }
+
+    .checkbox {
+        color: whitesmoke;
+        font-size: small;
+
+    }
+
+    .container {
+        border: 2px solid black;
+    margin: 41px 118px;
+    padding: 23px 106px 23px 23px;
+    width: 20%;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    font-family: 'Balsamiq Sans', cursive;
+    }
+
+.logo img {
+            width: 25%;
+            margin:-30px 121px;
+            padding:28px 23px;
+        }
+    
+
+    .form-group input {
+        display: block;
+        width: 330px;
+        padding: 5px;
+        border: 2px solid black;
+        margin: 12px auto;
+        font-size: 20px;
+        border-radius: 7px;
+    }
+
+    #head {
+        font-size: xx-large;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .form-group select {
+        display: block;
+        width: 344px;
+        padding: 5px;
+        border: 2px solid black;
+        margin: 12px auto;
+        font-size: 20px;
+        color: GREY;
+        border-radius: 7px;
+    }
+
+    .button {
+        display: inline-block;
+    width: 343px;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 12px auto;
+    font-size: 20px;
+    color: white;
+    border-radius: 7px;
+    background-color: GREY;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    .fp{
+        text-decoration: none;
+        font-size: small;
+        color: whitesmoke;
+        margin: 5px 0px ;
+        a:hover {
+        background-color: yellow;
+}
+        
+
+</style>
+
+<body>
+    <p id="tag_line">WELCOME TO RAKSHASUTRA</p>
+    <div class="container">
+    <div class="logo">
+    <img src="logo.jpeg">
+    </div>
+        <h2 id="head">PLEASE CHOOSE TO PROCEED :</h2>
+        <form action="noaction.php">
+            <div class="form-group">
+                <label for="profession"></label>
+                <select name="myprofession" placeholder="Profession" onchange="javascript:handleSelect(this)">
+                    <option> Select </option>
+                    <option value="policelogin.html">In Police Force</option>
+                    <option value="peoplelogin.html">Not In Police Force</option>
+                </select>
+                    <script type="text/javascript">
+                        function handleSelect(elm)
+                        {
+                        window.location = elm.value+".php";
+                        }
+                    </script>
+                    <script>
+                            $("select").click(function() {
+                        var open = $(this).data("isopen");
+                        if(open) {
+                            window.location.href = $(this).val()
+                        }
+                        //set isopen to opposite so next time when use clicked select box
+                        //it wont trigger this event
+                        $(this).data("isopen", !open);
+                        });
+                    </script>
+            </div>
+        </form>    
+    </div>
+</body>
+
+</html>

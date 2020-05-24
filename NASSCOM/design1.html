@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive Nav</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./css/all.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="Style1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend+Deca|Livvic:400,600&display=swap">
+    <style>
+        * {
+            /* theme colors */
+            --text-gray: #3F4954;
+            --bg-color: #f0a315;
+
+            /*  theme font-family */
+            --lexend: 'Lexend Deca', sans-serif;
+            --livvic: 'Livvic', sans-serif;
+
+            /* gradient colors */
+            --sky: linear-gradient(120deg, #685d4f 0%, #696355 100%);
+            /* 010 Winter Neva */
+        }
+
+        /* ------------------ navbar ----------------- */
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .text-black {
+            color: var(--bg-color);
+        }
+
+        body {
+            margin: 0%;
+            background-color: rgb(63, 42, 11);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            /* background-repeat: no-repeat; */
+        }
+
+        nav {
+            padding: 0 2rem;
+            background: var(--sky);
+            position: relative;
+            justify-content: space-between;
+            height: 0rem;
+            min-height: 10vh;
+            overflow-y: hidden;
+            transition: height 1s cubic-bezier(0.26, -0.01, 0, 1.01);
+        }
+
+        nav .nav-brand a {
+            display: block;
+            padding: 1rem 513px 1rem 1rem;
+            font-family: var(--lexend);
+            font-size: 1.6rem;
+        }
+
+        .logo img {
+            width: 63px;
+            left: 75px;
+            display: block;
+            margin: 0px -26px 0px -51px;
+            padding: 0px 0px 20px 20px;
+        }
+
+        nav .nav-items {
+            list-style-type: none;
+            margin: 0;
+        }
+
+        nav .nav-items .nav-link {
+            padding: 1.3rem 1rem;
+            font-family: var(--livvic);
+            font-size: 1.1rem;
+        }
+
+        nav .nav-items .nav-link:hover {
+            background: var(--bg-color);
+        }
+
+        nav .nav-items .nav-link:hover a {
+            color: white;
+        }
+
+        nav .social {
+            padding: 1.4rem 0;
+        }
+
+        nav .social i {
+            padding: 0 .2rem;
+        }
+
+        nav .toggle-collapse {
+            position: absolute;
+            top: 0%;
+            width: 100%;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav .toggle-collapse .toggle-icons {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.4rem 4rem;
+        }
+
+        nav .toggle-collapse .toggle-icons i {
+            font-size: 1.4rem;
+        }
+
+        .collapse {
+            height: 30rem;
+        }
+
+        /* creating own toggle icons  */
+        .icon,
+        .icon::before,
+        .icon::after {
+            position: relative;
+            width: 10px;
+            border: 2px solid var(--text-gray);
+            border-radius: 3rem;
+            display: inline-block;
+            transition: all .8s ease;
+            transition-property: width, left;
+        }
+
+        .icon::before {
+            content: " ";
+            position: absolute;
+            top: 5px;
+            width: 20px;
+            left: -12px;
+        }
+
+        .icon::after {
+            content: " ";
+            position: absolute;
+            top: 12px;
+            left: -2px;
+        }
+
+        .toggle-click,
+        .toggle-click::before,
+        .toggle-click::after {
+            width: 20px;
+        }
+
+        .toggle-click::before {
+            left: -2px;
+        }
+
+
+
+        @media only screen and (max-width: 800px) {
+            nav .nav-items {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-direction: column !important;
+                display: block !important;
+            }
+
+            nav .toggle-collapse {
+                display: initial;
+            }
+
+        }
+
+        /* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+        .flip-box {
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #f1f1f1;
+            perspective: 1000px;
+            /* Remove this if you don't want the 3D effect */
+        }
+
+        /* This container is needed to position the front and back side */
+        .flip-box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        /* Do an horizontal flip when you move the mouse over the flip box container */
+        .flip-box:hover .flip-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Position the front and back side */
+        .flip-box-front,
+        .flip-box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            /* Safari */
+            backface-visibility: hidden;
+        }
+
+        /* Style the front side (fallback if image is missing) */
+        .flip-box-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        /* Style the back side */
+        .flip-box-back {
+            background-color: dodgerblue;
+            color: white;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- navigation menu    -->
+    <nav class="nav flex-row">
+        <div class="logo">
+            <img src="logo.jpeg">
+        </div>
+        <div class="nav-menu">
+            <div class="nav-brand">
+                <a href="#" class="text-black">RAKSHASUTRA</a>
+            </div>
+
+        </div>
+        
+        </div>
+        <div>
+            <ul class="nav-items flex-row">
+                <li class="nav-link">
+                    <a href="design1.html" class="text-black">Home</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#" class="text-black">Profile</a>
+                </li>
+                <li class="nav-link">
+                    <a href="https://covindia.com/" class="text-black">Covid Updates</a>
+                </li>
+                <li class="nav-link">
+                    <a href="user_index.html" class="text-black">Map</a>
+                </li>
+                <li class="nav-link">
+                    <a href="logout.php" class="text-black">Log Out</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="social text-black">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+        </div> -->
+    </nav>
+    <div class="flip-box" style = "margin: 60px 10px 10px 91px;">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="me.jpg" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <img src="u.jpg" style="width:300px;height:200px">
+            </div>
+        </div>
+    </div>
+    <div class="flip-box" style= "margin: 60px 10px 10px 91px;">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="1.jpg" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <img src="2.jpg" style="width:300px;height:200px">
+            </div>
+        </div>
+    </div>
+    <div class="flip-box" style= "margin: -472px 10px 10px 519px;">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="2.jpeg" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <img src="3.jpg" style="width:300px;height:200px">
+            </div>
+        </div>
+    </div>
+    <div class="flip-box" style= "margin: 56px 10px 10px 518px;">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="4.jpg" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <img src="6.jpeg" style="width:300px;height:200px">
+            </div>
+        </div>
+    </div>
+    <div class="flip-box" style= "margin: -472px 10px 10px 939px;">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="D.jpg" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <img src="asli.jpg" style="width:300px;height:200px">
+            </div>
+        </div>
+    </div>
+    <div class="flip-box" style= "margin: 55px 10px 10px 939px;;">
+        <div class="flip-box-inner">
+            <div class="flip-box-front">
+                <img src="front.jpg" style="width:300px;height:200px">
+            </div>
+            <div class="flip-box-back">
+                <img src="back.jpg" style="width:300px;height:200px">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--    Custom Javascript      -->
+    <script src="./lines1.js"></script>
+    <script>
+        const toggleCollapse = document.querySelector('.toggle-collapse span');
+        const nav = document.querySelector('.nav');
+
+
+        // onclick event on toggle Collapse span tag
+        toggleCollapse.onclick = (e) => {
+            nav.classList.toggle("collapse");
+            e.target.classList.toggle("toggle-click");
+        }
+    </script>
+</body>
+
+</html>

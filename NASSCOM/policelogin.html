@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raksha_Sootra</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@0;1&family=Oswald:wght@700&display=swap"
+    rel="stylesheet">
+<style>
+    body {
+        /* CSS reset */
+        margin: 0px;
+        padding: 0px;
+        background-image: url("sid.jpg");
+        background-size: cover;
+        
+       
+    }
+
+    /* TAG LINE */
+    #tag_line {
+        color: whitesmoke;
+        font-size: 70px;
+        margin: 28px 0px 0px 46px;
+        font-family: 'Oswald', sans-serif;
+        text-shadow: whitesmoke;
+    }
+
+    .checkbox {
+        color: whitesmoke;
+        font-size: small;
+
+    }
+
+    .container {
+        border: 2px solid black;
+    margin: 41px 118px;
+    padding: 23px 106px 23px 23px;
+    width: 20%;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    font-family: 'Balsamiq Sans', cursive;
+    }
+
+    .logo img {
+            width: 25%;
+            margin:-30px 121px;
+            padding:28px 23px;
+        }
+
+    .form-group input {
+        display: block;
+        width: 330px;
+        padding: 5px;
+        border: 2px solid black;
+        margin: 12px auto;
+        font-size: 20px;
+        border-radius: 7px;
+    }
+
+    #head {
+        font-size: xx-large;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .form-group select {
+        display: block;
+        width: 344px;
+        padding: 5px;
+        border: 2px solid black;
+        margin: 12px auto;
+        font-size: 20px;
+        color: GREY;
+        border-radius: 7px;
+    }
+
+    .button {
+        display: inline-block;
+    width: 343px;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 12px auto;
+    font-size: 20px;
+    color: white;
+    border-radius: 7px;
+    background-color: GREY;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    .fp{
+        text-decoration: none;
+        font-size: small;
+        color: whitesmoke;
+        margin: 5px 0px ;
+        a:hover {
+        background-color: yellow;
+}
+
+
+    
+    
+</style>
+
+<body>
+        
+<script>  
+function validateform(){  
+var id1=document.myform.id.value; 
+var password1=document.myform.password.value; 
+
+if (id1==null || id1=="")
+{  
+  alert("Enter the user Id");  
+  return false; 
+}
+
+if(password1==null || password1=="")
+{
+     alert("Enter the password.");  
+  return false;  
+}
+else if(password1.length<8)
+{  
+  alert("Password must be at least 8 characters long.");  
+  return false;  
+  }  
+}  
+</script>  
+
+    <p id="tag_line">WELCOME TO RAKSHASUTRA</p>
+    <div class="container">
+     <div class="logo">
+    <img src="logo.jpeg">
+    </div>
+        <h2 id="head">LET'S START</h2>
+        <form action ="police_1.php" name = "myform" method="post" onsubmit="return validateform()">
+        <div class="form-group">
+                <input type="text" name="id" placeholder="ID">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="eligibility" > Keep Me Logged In 
+            </div>
+            <input type="submit" class="button" value="Login" name="login_police">
+            <a class = "fp" href="#">FORGOT PASSWORD?</a>
+            <input type="button" class="button" value="SignUp" name="signup_police" onclick="document.location = 'policeregister.php'">
+        </form>
+         <div style = "font-size:11px; color:red; margin-top:10px"><?php echo $error; ?></div>
+         <div style = "font-size:11px; color:red; margin-top:10px"><?php echo $err; ?></div>
+    </div>
+</body>
+
+</html>
